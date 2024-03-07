@@ -15,7 +15,7 @@ app.use(expressSession({ secret: "secret", resave:false, saveUninitialized:false
 app.use(express.static("public"));
 app.use(flash());
 
-connectMongoose();
+// connectMongoose();
 
 app.set("view engine","ejs");
 
@@ -54,22 +54,23 @@ app.get("/face-recog",(req,res) => {
 
 
 app.post("/register",async (req,res)=>{
-  const user = await User.findOne({email : req.body.email});  
-  if(!req.body.email || !req.body.email){
-      req.flash("error","Email and Password are required");
-      return res.redirect("/register");
-  }
-  else{
-  if(user!=null){
-      req.flash("error","User already exists");
-       return res.redirect("/register");
-  }
-  else{
-      const newUser = await User.create(req.body);
-      req.flash("success","Registered succesfully");
-  res.redirect("/");
-  }
-  }
+  // const user = await User.findOne({email : req.body.email});  
+  // if(!req.body.email || !req.body.email){
+  //     req.flash("error","Email and Password are required");
+  //     return res.redirect("/register");
+  // }
+  // else{
+  // if(user!=null){
+  //     req.flash("error","User already exists");
+  //      return res.redirect("/register");
+  // }
+  // else{
+  //     const newUser = await User.create(req.body);
+  //     req.flash("success","Registered succesfully");
+  // res.redirect("/");
+  // }
+  // }
+  res.redirect("/register");
 });
 
 app.post("/face-det", upload.single("faceprofile"), async (req,res) => {
