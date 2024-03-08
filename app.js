@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 const express = require("express");
 const multer = require("multer");
@@ -81,7 +81,7 @@ app.post("/face-recog", (req,res) => {
   res.redirect("/");
 });
 
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
-  console.log(`App is running on port http://localhost:7000`);
+  console.log(`App is running on port http://localhost:4000`);
 });

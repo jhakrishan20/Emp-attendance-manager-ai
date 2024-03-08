@@ -64,6 +64,7 @@ function startWebcam() {
   
       
      
+     setTimeout(async ()=>{
       const detections = await faceapi
       .detectAllFaces(video)
       .withFaceLandmarks()
@@ -87,7 +88,7 @@ function startWebcam() {
       );
       drawBox.draw(canvas);
     });
-    // console.log(results[0].label);
+    console.log(results[0].label);
     if(results[0].label!=null){
       if(nameofemp!=results[0].label){
         document.getElementById("nameofClient").innerHTML =  await `${results[0].label} marked present`;
@@ -95,5 +96,6 @@ function startWebcam() {
       nameofemp = await results[0].label;
       }
     }
+     },100);
   });
   
